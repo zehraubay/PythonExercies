@@ -1,0 +1,14 @@
+Virtual environment (sanal ortam): İzole çalışma ortamları oluşturmak için kullanılan araçlardır.
+Çalışmalar birbirini etkilemeyecek şekilde oluşturma imkanı sağlar.
+Örnek: venv, virtualenv, pipenv ve conda..
+
+Package managemenet (paket/modül/kütüphane yönetimi): Python dışındaki paketleri indirme, kurma, güncelleme gibi işlevleri vardır ve ayrıca
+bağımlılık yönetimi (dependence management) yapmaları. Örneğin numpy programını indirdiğiniz zaman aslında arka tarafta numpy'ın bağımlı olduğu bir çok kütüphane ve versiyonları otomatik olarak indirirler.
+Örnek: pip (requirements.txt), pipenv (pipfile), conda (environment.yaml)
+
+Virtual Environment (sanal ortam) ve Package Management (Paket Yönetici)
+Sanal ortamların listelenmesi için "conda env list" kullanılır.
+Sanal ortam oluşturma: conda create -n myenv(istediğin isim)
+Sanal ortamı aktif etme: conda create myenv
+Sanal ortamı deaktif yapma: conda deactivate
+Yüklü paketlerin listelenmesi: conda list
