@@ -1,0 +1,25 @@
+Örnek: pip (requirements.txt), pipenv (pipfile), conda (environment.yaml)
+
+Virtual Environment (sanal ortam) ve Package Management (Paket Yönetici)
+Sanal ortamların listelenmesi için "conda env list" kullanılır.
+Sanal ortamların listelenmesi: conda env list
+Sanal ortam oluşturma: conda create -n myenv(istediğin isim)
+Sanal ortamı aktif etme: conda create myenv
+Sanal ortamı deaktif yapma: conda deactivate
+Yüklü paketlerin listelenmesi: conda list
+Paket yükleme: conda install numpy
+Aynı anda birden fazla paket yükleme: conda install numpy spicy pandas
+Paket silme: conda remove package_name
+Belirli bir versiyona göre paket yükleme: conda install numpy=1.20.1
+Paket yükseltme: conda upgrade conda
+Tüm paketlerin yükseltilmesi: conda upgrade -all
+Pip ile paket yükleme: pip install pandas
+Belirli bir versiyona göre paket yükleme: pip install pandas==1.2.1
+#elimizde var olan sanal ortam bilgi setini (ismini, paketlerini, paketlerin versiyonlarını barındıran yaml dosyası) sıfırdan başka bir projede açmak
+conda env export > environment.yaml
+ls 
+conda deactivate
+conda env remove -n myenv
+conda env list (var olan ortamları gösterir)
+conda env create -f environment.yaml
+conda list
