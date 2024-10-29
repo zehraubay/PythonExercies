@@ -380,3 +380,388 @@ m[0]
 
 #break & continue & while
 
+salaries = [1000, 2000, 3000, 4000, 5000]
+
+# break ifadesi aranan koşul yakalandığında döngünün durmasını sağlar.
+
+for salary in salaries:
+    if salary == 3000:
+        break
+    print(salary)
+
+#continue
+
+for salary in salaries:
+    if salary  == 3000:
+        continue #görmezden gel, pas geç, diğer iterasyona geç, devam et
+    print(salary)
+
+#while -dı sürece
+
+number = 1
+while number < 5: #sayı 5'den küçük olduğu sürece
+    print(number) #şunu yap
+    number += 1 #sayı 1 geldi ve print edildi sonra üstüne 1 eklenip 5 'den küçük mü diye güncellendi.. en son 4 geldi ve 4 5'den küçük mü dedi print etti üstüne 1 ekledi ama 5 5'den küçük olmadığı için işlem durdu
+
+# Enumerate: otomatik counter/ındexer ile for loop
+# örneğin bir liste içerisinde gezerken bu elemanlara belirli bir işlem uygularken aynı zamanda işlem uygulanan elemanların index bilgisini de tutup gerekirse bu index bilgisine göre de bir işlem yapmak istediğimizde kullanılır
+
+students = ["John", "Mark", "Venessa", "Mariam"]
+
+for student in students:
+    print(student)
+
+for index, student in enumerate(students): #parantez içinde: neyi kullanarak hem index hemde ilgili nesnenin elemanlarını temsil edeceksin diyor
+    print(index, student)                     # enumerate(students, 1): ile 1 gibi istediğin sayıdan da başlatabilirsin
+
+A = []
+B = []
+
+for index, student in enumerate(students):
+    if index % 2 == 0:
+        A.append(student)
+    else:
+        B.append(student)
+# öğrenciler listesinde gezerken enumerate bana hem öğrencileri temsil etme hem de öğrencilerin liste içerisindeki indexlerini temsil etme imkanı veriyor
+# eğer yakalamış olduğum indexlerden ikiye bölümünden kalan 0 ise bu durumda ilgili öğrenciyi A listesine at, değilse B listesine at.
+
+#Uygulama
+#divide_students fonksiyonu yazınız.
+#Çift indexte yer alan öğrencileri bir listeye alınız
+#Tek indexte yer alan öğrencileri bir listeye alınız.
+#Fakat bu iki liste tek bir liste olarak return olsun.
+
+students = ["John", "Mark", "Venessa", "Mariam"]
+
+def divide_students(students):
+    groups = [[], []]
+    for index, student in enumerate(students):
+        if index % 2 == 0:
+            groups[0].append(student)
+        else:
+            groups[1].append(student)
+        print(groups)
+        return groups
+    
+st = divide_students(students)
+st[0]
+st[1]
+
+#alternating fonksiyonunun enumerate ile yazılması
+
+def alternating_with_enumerate(string):
+    new_string = ""
+    for i, letter in enumerate(string):
+        if i % 2 == 0:
+            new_string += letter.upper()
+        else:
+            new_string += letter.lower()
+    print(new_string)
+
+alternating_with_enumerate("hi my name is john and i am learning python")
+
+# Zip
+#birbirinden farklı olan listeleri bir arada değerlendirme imkanı sağlar.
+
+students = ["John", "Mark", "Venessa", "Mariam"]
+departments = ["mathematics", "statistics", "physics", "astronomy"]
+ages = [23, 30, 26, 22]
+
+list(zip(students, departments, ages))
+
+# lambda, map, filter, reduce
+
+def summer(a, b):
+    return a + b
+
+summer(1, 3) * 9
+
+#lambda bir fonksiyon tanımlama şeklidir. def ten farkı bunlar kullan at fonksiyonlardır.
+new_sum = lambda a, b: a + b
+new_sum(4, 5)
+
+#map
+#döngü yazmaktan kurtarır
+ 
+salaries = [1000, 2000, 3000, 4000, 5000]
+
+def new_salary(x):
+    return x * 20 / 100 + x
+
+new_salary(1000)
+
+for salary in salaries:
+    print(new_salary(salary))
+
+list(map(lambda x: x * 20 / 100 + x, salaries))
+
+list(map(lambda x: x ** 2, salaries))
+
+# Filter
+
+list_store = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+list(filter(lambda x: x % 2 == 0, list_store))
+
+# Reduce
+from functools import reduce
+list_store = [1, 2, 3, 4]
+reduce(lambda a, b: a + b, list_store)
+ # 1 + 2 = 3, 3 + 3 = 6, 6 + 4 = 10
+
+sayi = 10
+
+for num in range(0,sayi):
+    if num % 2 == 0:
+        print(num)
+
+if sayi % 2 == 0:
+    print("Sayı çifttir")
+
+# ALIŞTIRMALAR
+
+#GÖREV 1
+x = 8 
+type(x)
+
+y = 3.2
+type(y)
+
+z = 8j + 18
+type(z) # complex
+
+a = "Hello world"
+type(a)
+
+b = True
+type(b) #bool
+
+c = 23 < 22
+type(c) #bool
+
+l = [1, 2, 3, 4, "String", 3, 2, False]
+type(l)
+
+d = {"Name": "Jake",
+     "Age": [27,56],
+     "Adress": "Downtown"}
+type(d) #dict
+
+t = ("Machine Learning", "Data Science")
+type(t) #tuple
+
+s = {"Python", "Machine Learning", "Data Science"}
+type(s)
+
+# GÖREV 2
+text = "The goal is to turn data into information, and iformation into insight."
+
+text.upper().replace(","," ").replace("."," ").split()
+
+#GÖREV 3
+
+lst = ["D", "A", "T", "A", "S", "C", "I", "E", "N", "C", "E"]
+
+len(lst)
+lst[0]
+lst[10]
+list = lst[0:4]
+lst.pop(8)
+lst.append("Z")
+lst[8] = "N" 
+
+#GÖREV 4
+
+dict = {'Christian': ["Amerika", 18],
+        'Daisy': ["England", 12],
+        'Antonio': ["Spain", 22],
+        'Dante': ["Italy", 25]}
+
+dict.keys()
+dict.values()
+dict['Daisy'] = ["England", 13]
+dict.update({'Ahmet': ["Türkiye, 24"]})
+dict.pop('Antonio')
+
+#Görev 5
+
+l = [2,13,18,93,22]
+
+def func(lst):
+    even_list = [] #çift
+    odd_list = [] #tek
+    for i in lst:
+        if i % 2 == 0:
+            even_list.append(i)
+        else:
+            odd_list.append(i)
+    print(even_list)
+    print(odd_list)
+    return even_list, odd_list
+
+even_list, odd_list = func(l)
+
+#Görev 6
+
+ogrenciler = ["Ali", "Veli", "Ayşe", "Talat", "Zeynep", "Ece"]
+
+for i, ogrenci in enumerate(ogrenciler):
+    if i < 3:
+        i += 1
+        print("Mühendislik Fakültesi",i,".öğrenci:", ogrenci)
+    else:
+        i -= 2
+        print("Tıp Fakültesi",i,".öğrenci:",ogrenci)
+
+#Görev 7
+ders_kodu = ["CMP1005", "PSY1001", "HUK1005", "SEN2204"]
+kredi = [3,4,2,4]
+kontenjan = [30,75,150,25]
+
+for kod, krd, kont in zip(ders_kodu, kredi, kontenjan):
+    print(f"Kredisi {krd} olan {kod} kodlu dersin kontenjanı {kont} kişidir")
+
+#Görev 8
+
+kume1 = set(["data", "python"])
+kume2 = set(["data", "function", "qcut", "lambda", "python", "miuul"])
+
+kume1.issuperset(kume2)
+kume2.difference(kume1)
+
+kume2 - kume1
+
+# COMPREHENSIONS
+
+# List Comprehension
+
+salaries = [1000, 2000, 3000, 4000, 5000]
+
+def new_salary(x):
+    return x * 20 / 100 + x
+
+for salary in salaries:
+    print(new_salary(salary))
+
+null_list = []
+for salary in salaries:
+    null_list.append(new_salary(salary))
+
+for salary in salaries:
+    if salary > 3000:
+        null_list.append(new_salary(salary))
+    else:
+        null_list.append(new_salary(salary * 2))
+
+[new_salary(salary * 2) if salary < 3000 else new_salary(salary) for salary in salaries]
+
+[salary * 2 for salary in salaries]
+
+[salary * 2 for salary in salaries if salary < 3000]
+
+[salary * 2 if salary < 3000 else salary * 0 for salary in salaries]
+# if' i yalnız kullanacaksanız sol tarafta kalır ancak if-else kullanacaksanız sağ tarafta olmalı
+
+[new_salary(salary * 2) if salary < 3000 else salary * new_salary(salary * 0.2) for salary in salaries]
+
+students = ["John", "Mark", "Venessa", "Mariam"]
+
+students_no = ["John", "Venessa"]
+
+[student.lower() if student in students_no else student.upper() for student in students]
+
+[student.upper() if student not in students_no else student.lower() for student in students]
+
+#Dict Comprehension
+
+dictionary = {'a': 1,
+              'b': 2,
+              'c': 3,
+              'd': 4}
+
+dictionary.keys()
+dictionary.values()
+dictionary.items() # key ve value değerlerine tuple şeklinde görmek
+
+{k: v ** 2 for (k, v) in dictionary.items()}
+
+{k.upper(): v ** 2 for (k, v) in dictionary.items()}
+
+#Uygulama
+# Amaç: çift sayıların karesi alınarak bir sözlüğe eklenmek istenmektedir.
+#Key'ler orijinal değerler value'lar ise değiştilmiş değerler olacak.
+
+numbers = range(10)
+new_dict = {}
+
+for n in numbers:
+    if n % 2 == 0:
+        new_dict[n] = n ** 2
+
+{n: n ** 2 for n in numbers if n % 2 == 0}
+ 
+# Bir veri setindeki değişken isimlerini değiştirmek
+
+# before:
+# ['total', 'speeding', 'alcohol', 'not_distracted', 'no_previous', 'ins_premium', 'ins_losses', 'abbrev']
+
+#after:
+# ['TOTAL', 'SPEEDING', 'ALCOHOL', 'NOT_DISTRACTED', 'NO_PREVIOUS', 'INS_PREMIUM', 'INS_LOSSES', 'ABBREV']
+
+import seaborn
+df = seaborn.load_dataset("car_crashes") # seaborn üzerinden araba kazaları data setini getir
+df.columns
+
+for col in df.columns:
+    print(col.upper())
+
+A = []
+
+for col in df.columns:
+    A.append(col.upper())
+df.columns = A
+
+df = seaborn.load_dataset("car_crashes")
+df.columns = [col.upper() for col in df.columns]
+
+#İçerisinde "INS" olan değişkenlerin başına FLAF diğerlerine NO_FLAG eklemek istiyoruz.
+
+["FLAG_" + col for col in df.columns if "INS" in col]
+
+"A" + "B"  # 'AB'
+
+["FLAG_" + col if "INS" in col else "NO_FLAG_" + col for col in df.columns]
+
+df.columns = ["FLAG_" + col if "INS" in col else "NO_FLAG_" + col for col in df.columns]
+
+# Amaç key'i string, value'su aşağıdaki gibi bir liste olan sözlük oluşturmak
+#sadece sayısal değişkenler için yapmak istiyoruz.
+
+# Output:
+# {'total': ['mean', 'min', 'max', 'var'],
+#  'speeding: ['mean', 'min', 'max', 'var'],
+#  'alcohol': ['mean', 'min', 'max', 'var'],
+#  'not_distracted': ['mean', 'min', 'max', 'var'],
+#  'no_previous': ['mean', 'min', 'max', 'var'],
+#  'ins_premium': ['mean', 'min', 'max', 'var'],
+#  'ins_losses': ['mean', 'min', 'max', 'var']}
+
+import seaborn as sns
+df = sns.load_dataset("car_crashes")
+df.columns #sütunlar
+
+num_cols = [col for col in df.columns if df[col].dtype != "O"]
+# dataframe içerisinden ilgili değişkeni yakaladığımızda (df[col]) ve dtype (tipi) eşit değildir (!=) object yani "O"
+# örneğin df[alcohol] yazdığımızda bu değişkeni seçer ve dtype ile bunun tipine bakar 0 işareti kategorik(object) (string) değişkenleri temsil eder.
+# numeric(sayısal) değişkenleri getirmesini istiyoruz
+
+soz = {}
+agg_list = ['mean', 'min', 'max', 'var']
+
+for col in num_cols: #numeric kolonlarda geziyoruz
+    soz[col] = agg_list #soz isimli sözlüğe num_cols'daki kolonları ekledim (keyleri ekledim) ve bunların value bölümüne sabit bir liste girdik
+
+new_dict = {col: agg_list for col in num_cols}
+
+df[num_cols].head()
+
+df[num_cols].agg(new_dict)
