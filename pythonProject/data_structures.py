@@ -165,7 +165,7 @@ dictionary = {"Name": 21,
 
 dictionary["School No"]
 
-dictionary["Name n Surname"][0]
+# dictionary["Name n Surname"][0]
 
 #Key sorgulama
 
